@@ -1,4 +1,4 @@
-var change =  function (amount) {
+exports.change =  function (amount) {
 	if (amount < 0) {
 		throw "amount cannot be negative";
 	}
@@ -11,14 +11,14 @@ var change =  function (amount) {
 	return [quarters, dimes, nickels, pennies];
 };
 
-var stripQuotes = function (s) {
+exports.stripQuotes = function (s) {
 	return s.replace(/["']/g,"");
 };
 
 
 //http://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle
 
-var scramble = function (s) {
+exports.scramble = function (s) {
     var a = s.split(""),
         n = a.length;
 
@@ -31,20 +31,20 @@ var scramble = function (s) {
     return a.join("");
 };
 
-var powersOfTwo = function (limit, callback) {
+exports.powersOfTwo = function (limit, callback) {
 	for (var x = 1; x <= limit; x = x*2) {
 		callback(x);
 	}
 };
 
-var prefixes = function (s, callback) {
+exports.prefixes = function (s, callback) {
 	for (var i = 0; i <= s.length; i++) {
         var result = s.substring(0,i);
 		callback(result);
 	}
 };
 
-var interleave = function (x, y) {
+var interleave = exports.interleave = function (x, y) {
     var max = Math.max(x.length, y.length), result = [];
     for (var i = 0; i < max; i ++) {
         if (i < x.length) result.push(x[i]);
@@ -53,6 +53,6 @@ var interleave = function (x, y) {
     return result;
 };
 
-var stutter = function(x) {
+exports.stutter = function(x) {
 	return interleave(x,x);
 };
